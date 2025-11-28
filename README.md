@@ -1,0 +1,2 @@
+# JARVIS-BY-NAQEEB-AHMED-QURESHI
+take knowlage
