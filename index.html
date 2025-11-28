@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jarvis India GK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #chatBox {
+            width: 600px;
+            height: 500px;
+            background-color: #000;
+            border: 2px solid #0f0;
+            padding: 10px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 10px;
+            width: 450px;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0f0;
+            color: #111;
+            cursor: pointer;
+        }
+        .user { color: #0ff; }
+        .jarvis { color: #ff0; }
+    </style>
+</head>
+<body>
+    <h1>Jarvis India GK</h1>
+    <div id="chatBox"></div>
+    <input type="text" id="userInput" placeholder="Ask about India...">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const knowledge = {
+            // History
+            "independence": "India gained independence from British rule on 15th August 1947.",
+            "freedom fighters": "Famous freedom fighters include Mahatma Gandhi, Bhagat Singh, Subhash Chandra Bose, and Jawaharlal Nehru.",
+            "ancient india": "Ancient India had civilizations like Indus Valley, Vedic period, Maurya and Gupta empires.",
+            "mughal empire": "The Mughal Empire ruled India from 1526 to 1857 and included emperors like Akbar and Shah Jahan.",
+            "british rule": "British ruled India from 1757 to 1947. The revolt of 1857 was the first major uprising against them.",
+            
+            // Geography
+            "capital": "The capital of India is New Delhi.",
+            "largest state": "Rajasthan is the largest state by area.",
+            "smallest state": "Goa is the smallest state in India.",
+            "mountains": "The Himalayas are the highest mountain range in India.",
+            "rivers": "Major rivers include Ganga, Yamuna, Brahmaputra, Godavari, and Krishna.",
+            
+            // Politics
+            "prime minister": "The current Prime Minister of India is Narendra Modi.",
+            "president": "The current President of India is Droupadi Murmu.",
+            "parliament": "India has a bicameral parliament: Lok Sabha and Rajya Sabha.",
+            "constitution": "The Constitution of India was adopted on 26th January 1950.",
+            
+            // Economy
+            "currency": "The currency of India is Indian Rupee (INR).",
+            "economy": "India has a mixed economy, with agriculture, industry, and services contributing to GDP.",
+            "stock exchange": "Major stock exchanges are BSE (Bombay Stock Exchange) and NSE (National Stock Exchange).",
+            
+            // Culture & Symbols
+            "national animal": "The national animal of India is the Bengal Tiger.",
+            "national bird": "The national bird is the Indian Peacock.",
+            "national flower": "The national flower is Lotus.",
+            "festivals": "Major festivals include Diwali, Holi, Eid, Christmas, Pongal, and Durga Puja.",
+            "languages": "India has 22 officially recognized languages. Hindi and English are most widely used.",
+            
+            // Science & Tech
+            "space program": "ISRO (Indian Space Research Organisation) is India's space agency.",
+            "satellite": "India launched Chandrayaan-1 in 2008 and Mangalyaan in 2013.",
+            
+            // Current Affairs
+            "current president": "The current President of India is Droupadi Murmu.",
+            "current prime minister": "The current Prime Minister of India is Narendra Modi.",
+            "recent events": "India recently launched the Gaganyaan mission preparation for human spaceflight."
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('userInput').value.trim().toLowerCase();
+            if (!input) return;
+
+            const chatBox = document.getElementById('chatBox');
+            chatBox.innerHTML += `<p class="user">You: ${input}</p>`;
+            document.getElementById('userInput').value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            let response = "Sorry, I don't know about that. Try asking something else about India.";
+
+            for (const key in knowledge) {
+                if (input.includes(key)) {
+                    response = knowledge[key];
+                    break;
+                }
+            }
+
+            chatBox.innerHTML += `<p class="jarvis">Jarvis: ${response}</p>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
